@@ -45,3 +45,34 @@
   .gallery-thumbnail.selected {
     border-color: #007bff; /* Sua cor primária */
   }
+
+  /* Esconder a barra de rolagem mas manter a funcionalidade */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Animações para os botões de navegação */
+.gallery-nav-button,
+.collections-nav-button {
+  transition: all 0.2s ease;
+}
+
+.gallery-nav-button:hover,
+.collections-nav-button:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Animação para os indicadores */
+.gallery-indicators button {
+  transition: all 0.3s ease;
+}
+
+.gallery-indicators button:hover {
+  transform: scale(1.2);
+}

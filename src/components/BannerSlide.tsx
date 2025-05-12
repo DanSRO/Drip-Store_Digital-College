@@ -130,10 +130,12 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
           src={imageSrc || "/placeholder.svg"}
           alt={title}
           style={{
-            maxHeight: "90%",
-            maxWidth: "90%",
+            maxHeight: "100%",
+            maxWidth: "100%",
+            width:"733.51px",
+            height:"431.61",
             objectFit: "contain",
-            transform: "rotate(-19.34deg)", // Rotação do tênis como na imagem de referência
+            transform: "rotate(-19.34deg)",
             zIndex: 2,
           }}
         />

@@ -159,7 +159,6 @@
 import { Gallery } from "../components/Gallery"
 import { CollectionsGallery } from "../components/CollectionsGallery"
 import { BannerSlide } from "../components/BannerSlide"
-import { ProductOptions } from "../components/ProductOptions"
 import { Section } from "../components/Section"
 import { ProductListing } from "../components/ProductListing"
 import "../components/Gallery.css"
@@ -241,8 +240,6 @@ export const HomePage = () => {
 
   return (
     <>
-      <ProductOptions />
-
       {/* Banner principal com slides personalizados */}
       <div style={{ maxWidth: "100%", overflow: "hidden" }}>
         <Gallery

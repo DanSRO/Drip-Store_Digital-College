@@ -38,7 +38,7 @@ export const Section:React.FC<SectionProps> = ({
                     <a 
                         href={link.href}
                         style={{
-                            color:'#0070f3',
+                            color:'#c92071',
                             fontSize:'18px',
                             textDecoration:'none',
                             marginLeft:'auto',

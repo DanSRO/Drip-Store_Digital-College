@@ -6,14 +6,13 @@ export const ProductOptions = () => {
     <section
       style={{
         display: 'flex',
-        justifyContent: 'space-around', // Distribui o espaço entre os elementos
+        justifyContent: 'space-around', 
         alignItems: 'center',
-        // flexDirection: 'row-reverse',
-        backgroundColor: '#f9f9f9', // Cor de fundo clara
-        width: '100%', // Ocupa toda a largura
-        height: 'auto', // Altura similar ao Gallery anterior
-        padding: '40px 20px', // Adiciona um pouco de espaço interno
-        position: 'relative', // Para posicionar elementos absolutos dentro (como os pontos)
+        backgroundColor: '#f9f9f9',
+        width: '100%',
+        height: 'auto',
+        padding: '40px 20px',
+        position: 'relative',
         overflow:'hidden',
       }}
     >

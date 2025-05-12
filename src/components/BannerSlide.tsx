@@ -4,6 +4,8 @@ import type React from "react"
 
 import { Link } from "react-router-dom"
 
+import ornamentImage from '/Ornament 11.png';
+
 interface BannerSlideProps {
   title: string
   subtitle: string
@@ -32,6 +34,7 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
         height: "100%",
         backgroundColor,
         display: "flex",
+        justifyContent:"space-around",
         position: "relative",
         overflow: "hidden",
       }}
@@ -50,8 +53,8 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
         {discount && (
           <div
             style={{
-              backgroundColor: "#FFD700",
-              color: "#000",
+              // backgroundColor: "#FFD700",
+              color: "#ff9800",
               padding: "4px 12px",
               borderRadius: "4px",
               display: "inline-block",
@@ -66,7 +69,7 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
 
         <h1
           style={{
-            fontSize: "42px",
+            fontSize: "64px",
             fontWeight: "bold",
             marginBottom: "16px",
             color: textColor,
@@ -93,14 +96,16 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
         <Link to={buttonLink}>
           <button
             style={{
-              backgroundColor: "#FF4D4D",
+              backgroundColor: "#e91e63",
+              width:"200px",
+              margin:"20px",
               color: "white",
               border: "none",
-              padding: "12px 24px",
-              borderRadius: "4px",
+              padding: "10px 20px",
+              borderRadius: "8px",
               fontWeight: "bold",
               cursor: "pointer",
-              fontSize: "16px",
+              fontSize: "1em",
               transition: "background-color 0.3s",
             }}
             onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#E63939")}
@@ -128,7 +133,7 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
             maxHeight: "90%",
             maxWidth: "90%",
             objectFit: "contain",
-            transform: "rotate(-30deg)", // Rotação do tênis como na imagem de referência
+            transform: "rotate(-19.34deg)", // Rotação do tênis como na imagem de referência
             zIndex: 2,
           }}
         />
@@ -137,10 +142,10 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
         <div
           style={{
             position: "absolute",
-            top: "10%",
-            right: "10%",
-            width: "120px",
-            height: "120px",
+            top: "15px",
+            right: "25px",
+            width: "160px",
+            height: "150px",
             borderRadius: "50%",
             background: "rgba(255, 77, 77, 0.1)",
             zIndex: 1,
@@ -163,13 +168,16 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
         <div
           style={{
             position: "absolute",
-            top: "15%",
-            right: "5%",
-            width: "100px",
-            height: "100px",
-            backgroundImage: "radial-gradient(#ddd 1px, transparent 2px)",
-            backgroundSize: "10px 10px",
-            zIndex: 1,
+            top: "20px",
+            right: "30px",
+            width: "140px",
+            height: "140px",
+            backgroundImage: `url(${ornamentImage})`,
+            // backgroundImage: "radial-gradient(#ddd 1px, transparent 2px)",
+            // backgroundSize: "10px 10px",
+            backgroundSize: "cover",
+            // zIndex: 1,
+            opacity:0.4
           }}
         />
       </div>

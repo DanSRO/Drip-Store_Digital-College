@@ -168,12 +168,12 @@ export const HomePage = () => {
   // Dados para os banners principais
   const bannerSlides = [
     {
-      src: "/public/collection-1.png", // Este é apenas um placeholder, o componente real será usado
+      src: "/White-Sneakers-PNG-Clipart 1.png",
       component: (
         <BannerSlide
           title="Queima de estoque Nike"
           subtitle="O tênis que você esperou muito nas redes sociais do tempo agora também é uma conversação."
-          imageSrc="/public/collection-1.png" // Substitua pelo caminho da imagem do tênis Nike branco
+          imageSrc="/White-Sneakers-PNG-Clipart 1.png"
           buttonText="Ver ofertas"
           buttonLink="/ofertas/nike"
           discount="Melhores ofertas personalizadas"
@@ -187,8 +187,8 @@ export const HomePage = () => {
         <BannerSlide
           title="Coleção Adidas 2023"
           subtitle="Descubra os novos modelos da Adidas com descontos exclusivos para você."
-          imageSrc="/public/collection-2.png"
-          buttonText="Explorar coleção"
+          imageSrc="/Layer 1aa.png"
+          buttonText="Explorar Coleção"
           buttonLink="/colecao/adidas"
           discount="Até 30% OFF"
           backgroundColor="#f0f8ff"
@@ -201,7 +201,7 @@ export const HomePage = () => {
         <BannerSlide
           title="Novos Beats Bass"
           subtitle="A melhor qualidade de som agora com preços imperdíveis. Confira nossa seleção."
-          imageSrc="/public/collection-3.png"
+          imageSrc="/Laye.png"
           buttonText="Ver produtos"
           buttonLink="/produtos/beats"
           discount="Lançamento"
@@ -214,25 +214,25 @@ export const HomePage = () => {
   // Dados para as coleções em destaque
   const collectionImages = [
     {
-      src: "/public/product-thumb-1.png",
+      src: "/collection-1.png",
       title: "Novo drop Supreme",
       discount: "10% OFF",
       link: "/colecao/supreme",
     },
     {
-      src: "/public/product-thumb-2.png",
+      src: "/collection-2.png",
       title: "Coleção Adidas",
       discount: "15% OFF",
       link: "/colecao/adidas",
     },
     {
-      src: "/public/product-thumb-3.png",
+      src: "/collection-3.png",
       title: "Novo Beats Bass",
       discount: "20% OFF",
       link: "/colecao/beats",
     },
     {
-      src: "/public/product-thumb-4.png",
+      src: "/product-thumb-1.jpeg",
       title: "Coleção Nike",
       discount: "25% OFF",
       link: "/colecao/nike",

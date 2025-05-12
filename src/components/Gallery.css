@@ -1,0 +1,47 @@
+.gallery-container {
+    /* Estilos básicos já definidos inline */
+  }
+  
+  .gallery-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Garante que os botões fiquem acima da imagem */
+  }
+  
+  .gallery-nav-left {
+    left: 10px;
+  }
+  
+  .gallery-nav-right {
+    right: 10px;
+  }
+  
+  .gallery-nav-button img {
+    width: 24px; /* Ajuste o tamanho dos ícones conforme necessário */
+    height: 24px;
+  }
+  
+  .gallery-thumbnails-container {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border-radius: 6px;
+  }
+  
+  .gallery-thumbnail {
+    border: 2px solid transparent;
+  }
+  
+  .gallery-thumbnail.selected {
+    border-color: #007bff; /* Sua cor primária */
+  }

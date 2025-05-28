@@ -1,167 +1,21 @@
-// // import { ProductCard } from "../components/ProductCard"
-// import { Gallery } from "../components/Gallery"
-// import { ProductListing } from "../components/ProductListing"
-// import { ProductOptions } from "../components/ProductOptions"
-// import { Section } from "../components/Section"
-
-// export const HomePage = () =>{
-//     return(
-//         <>
-//             <ProductOptions/>
-//             <Section
-//                 title="Coleções em Destaque"
-//                 titleAlign="left"
-//                 link={{text:'', href:''}}            
-//             >                
-//                 <Gallery 
-//                     width="800px"
-//                     height="100px"
-//                     radius="4px"
-//                     showThumbs
-//                     images={[
-//                         {src:'/public/collection-1.png'},
-//                         {src:'/public/collection-2.png'},               
-//                         {src:'/public/collection-3.png'},
-//                     ]}
-//                 />
-//             </Section>
-//             <Section
-//                 title="Produtos em Alta"
-//                 titleAlign="left"
-//                 link={{text:'Ver todos →', href:'/produtos'}}                
-//             >
-//             <ProductListing/>
-//             </Section>
-//         </>
-//     )
-// }
-
-// import { Gallery } from '../components/Gallery';
-// import { ProductListing } from '../components/ProductListing';
-// import { ProductOptions } from '../components/ProductOptions';
-// import { Section } from '../components/Section';
-
-// export const HomePage = () => {
-//   const bannerImages = [
-//     { src: '/public/collection-1.png' }, 
-//     { src: '/public/collection-2.png' },
-//     { src: '/public/collection-3.png' },
-//   ];
-
-//   const collectionImages = [
-//     { src: '/public/product-thumb-1.png' }, 
-//     { src: '/public/product-thumb-2.png' },
-//     { src: '/public/product-thumb-3.png' },
-//     { src: '/public/product-thumb-4.png' },
-//     // ... mais imagens de coleções
-//   ];
-
-//   return (
-//     <>
-//       <ProductOptions />
-//       {/* Banner principal */}
-//       <Gallery
-//         width="1440px"
-//         height="681px"
-//         radius="4px"
-//         showThumbs // Ativa as "thumbnails" (bolinhas neste caso)
-//         images={bannerImages}
-//       />
-//       {/* Seção de Coleções em Destaque */}
-//       <Section title="Coleções em Destaque" titleAlign="left" link={{ text: '', href: '' }}>
-//         <div style={{ overflowX: 'auto' }}> {/* Container para rolagem horizontal */}
-//           <Gallery
-//             width="auto" // Largura automática para se ajustar ao conteúdo
-//             height="auto" // Altura automática para as imagens das coleções
-//             radius="4px"
-//             images={collectionImages}
-//             className="collections-gallery" // Classe para estilos específicos
-//           />
-//         </div>
-//       </Section>
-//       <Section
-//           title="Produtos em Alta"
-//           titleAlign="left"
-//           link={{text:'Ver todos →', href:'/produtos'}}                
-//       >
-//       <ProductListing/>
-//       </Section>
-//     </>
-//   );
-// };
-
-// import { Gallery } from '../components/Gallery';
-// import { CollectionsGallery } from "../components/CollectionsGallery";
-// import { ProductOptions } from "../components/ProductOptions";
-// import { Section } from "../components/Section";
-// import { ProductListing } from "../components/ProductListing";
-// import "../components/Gallery.css";
-
-// export const HomePage = () => {
-//   const bannerImages = [
-//     // { src: "/public/collection-1.png" },
-//     { src: "/White-Sneakers-PNG-Clipart 1.png" },
-//     { src: "/public/collection-2.png" },
-//     { src: "/public/collection-3.png" },
-//   ]
-
-//   const collectionImages = [
-//     {
-//       src: "/public/product-thumb-1.png",
-//       title: "Novo drop Supreme",
-//       discount: "10% OFF",
-//       link: "/colecao/supreme",
-//     },
-//     {
-//       src: "/public/product-thumb-2.png",
-//       title: "Coleção Adidas",
-//       discount: "15% OFF",
-//       link: "/colecao/adidas",
-//     },
-//     {
-//       src: "/public/product-thumb-3.png",
-//       title: "Novo Beats Bass",
-//       discount: "20% OFF",
-//       link: "/colecao/beats",
-//     },
-//     {
-//       src: "/public/product-thumb-4.png",
-//       title: "Coleção Nike",
-//       discount: "25% OFF",
-//       link: "/colecao/nike",
-//     },
-//     // Você pode adicionar mais imagens conforme necessário
-//   ]
-
-//   return (
-//     <>
-//       <ProductOptions />
-
-//       {/* Banner principal */}
-//       <div style={{ maxWidth: "100%", overflow: "hidden" }}>
-//         <Gallery width="100%" height="681px" radius="4px" showThumbs={true} images={bannerImages} />
-//       </div>
-
-//       {/* Seção de Coleções em Destaque */}
-//       <Section title="Coleções em destaque" titleAlign="left" link={{ text: "", href: "" }}>
-//         <CollectionsGallery images={collectionImages} />
-//       </Section>
-
-//       {/* Seção de Produtos em Alta */}
-//       <Section title="Produtos em Alta" titleAlign="left" link={{ text: "Ver todos →", href: "/produtos" }}>
-//         <ProductListing />
-//       </Section>
-//     </>
-//   )
-// }
-
-
 import { Gallery } from "../components/Gallery"
 import { CollectionsGallery } from "../components/CollectionsGallery"
 import { BannerSlide } from "../components/BannerSlide"
 import { Section } from "../components/Section"
 import { ProductListing } from "../components/ProductListing"
 import "../components/Gallery.css"
+import { SpecialPromotion } from "../components/SpecialPromotion"
+import { CategoryIcons } from "../components/CategoryIcons"
+import "../components/Gallery.css"
+
+// Importando ícones do Lucide React
+import {
+  ShirtIcon as TShirt,
+  LibraryBigIcon as Pants,
+  HeadphonesIcon,
+  FootprintsIcon as Shoe,
+  GraduationCapIcon as Hat,
+} from "lucide-react"
 
 export const HomePage = () => {
   // Dados para os banners principais
@@ -231,6 +85,36 @@ export const HomePage = () => {
       link: "/colecao/beats",
     },
     {
+      src: "/collection-1.png",
+      title: "Novo drop Supreme",
+      discount: "10% OFF",
+      link: "/colecao/supreme",
+    },
+    {
+      src: "/collection-2.png",
+      title: "Coleção Adidas",
+      discount: "15% OFF",
+      link: "/colecao/adidas",
+    },
+    {
+      src: "/collection-3.png",
+      title: "Novo Beats Bass",
+      discount: "20% OFF",
+      link: "/colecao/beats",
+    },
+    {
+      src: "/product-thumb-1.jpeg",
+      title: "Coleção Nike",
+      discount: "25% OFF",
+      link: "/colecao/nike",
+    },
+    {
+      src: "/collection-3.png",
+      title: "Novo Beats Bass",
+      discount: "20% OFF",
+      link: "/colecao/beats",
+    },
+    {
       src: "/product-thumb-1.jpeg",
       title: "Coleção Nike",
       discount: "25% OFF",
@@ -238,8 +122,37 @@ export const HomePage = () => {
     },
   ]
 
+    // Dados para as categorias com ícones
+    const categories = [
+      {
+        name: "Camisetas",
+        icon: <TShirt size={32} color="#FF6B9D" />,
+        link: "/categoria/camisetas",
+      },
+      {
+        name: "Calças",
+        icon: <Pants size={32} color="#7C9C7C" />,
+        link: "/categoria/calcas",
+      },
+      {
+        name: "Bonés",
+        icon: <Hat size={32} color="#7C9C7C" />,
+        link: "/categoria/bones",
+      },
+      {
+        name: "Headphones",
+        icon: <HeadphonesIcon size={32} color="#666" />,
+        link: "/categoria/headphones",
+      },
+      {
+        name: "Tênis",
+        icon: <Shoe size={32} color="#666" />,
+        link: "/categoria/tenis",
+      },
+    ]
+
   return (
-    <>
+    <div style={{maxWidth:'1280px', marginLeft:'auto', marginRight:'auto', paddingLeft:'1rem', paddingRight:'1rem' }}>
       {/* Banner principal com slides personalizados */}
       <div style={{ maxWidth: "100%", overflow: "hidden" }}>
         <Gallery
@@ -258,10 +171,18 @@ export const HomePage = () => {
         <CollectionsGallery images={collectionImages} />
       </Section>
 
+      {/* Seção de Coleções em Destaque com ícones */}
+      <Section title="Coleções em Destaque" titleAlign="center" link={{ text: "", href: "" }}>
+        <CategoryIcons categories={categories} />
+      </Section>
+
       {/* Seção de Produtos em Alta */}
       <Section title="Produtos em Alta" titleAlign="left" link={{ text: "Ver todos →", href: "/produtos" }}>
         <ProductListing />
       </Section>
-    </>
+
+      {/*Seção de Produtos em oferta especial */}
+      <SpecialPromotion/>
+    </div>
   )
 }

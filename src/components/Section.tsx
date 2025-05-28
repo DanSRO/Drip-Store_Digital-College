@@ -52,25 +52,3 @@ export const Section:React.FC<SectionProps> = ({
         </section>
     );
 };
-
-
-/* componente que havia usado no final da home para apresentar a oferta especial
-<>
-            <p>Último component da Home</p>
-        <div style={{display:'flex', margin:'5px', padding:'20px'}}>
-            <div>                
-                <img src="/public/Laye.png" alt="Tênis destaque verde" style={{width:'700px', height:'500px'}} />
-            </div>
-            <div>
-                <h6>Oferta especial</h6>
-                <h2><strong>Air Jordan edição de colecionador</strong></h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptatem at, sequi eveniet sint excepturi, blanditiis impedit consectetur ratione modi vitae saepe delectus porro. Quasi magnam atque aliquam ex nemo.</p>
-                <div>
-                    <button className="button-primary">Ver oferta</button>
-                </div>
-            </div>
-        </div>
-        <section>
-            <title style={{color:'darkgray-2'}}></title>
-        </section>
-*/

@@ -52,8 +52,7 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
       >
         {discount && (
           <div
-            style={{
-              // backgroundColor: "#FFD700",
+            style={{              
               color: "#ff9800",
               padding: "4px 12px",
               borderRadius: "4px",
@@ -108,8 +107,8 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
               fontSize: "1em",
               transition: "background-color 0.3s",
             }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#E63939")}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#FF4D4D")}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#E91E63")}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#E91E67")}
           >
             {buttonText}
           </button>
@@ -174,9 +173,7 @@ export const BannerSlide: React.FC<BannerSlideProps> = ({
             right: "30px",
             width: "140px",
             height: "140px",
-            backgroundImage: `url(${ornamentImage})`,
-            // backgroundImage: "radial-gradient(#ddd 1px, transparent 2px)",
-            // backgroundSize: "10px 10px",
+            backgroundImage: `url(${ornamentImage})`,            
             backgroundSize: "cover",
             // zIndex: 1,
             opacity:0.4

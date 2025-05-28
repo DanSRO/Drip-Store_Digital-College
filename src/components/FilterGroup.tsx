@@ -12,7 +12,9 @@ export const FilterGroup = () =>{
             </Link>
             <div className='input-container'>          
                 <input type="text" className='input' placeholder='Pesquisar produto' />
-                <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    style={{width:'20px', height:'20px', fill:'#666', marginLeft:'8px', flexShrink:0}}
+                >
                     <path d="M10 2a8 8 0 0 1 6.32 12.94l5.38 5.39-1.41 1.41-5.38-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/>
                 </svg>
             </div>

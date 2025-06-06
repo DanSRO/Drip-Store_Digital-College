@@ -1,0 +1,88 @@
+.gallery-container {
+    /* Estilos básicos já definidos inline */
+  }
+  
+  .gallery-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Garante que os botões fiquem acima da imagem */
+  }
+  
+  .gallery-nav-left {
+    left: 10px;
+  }
+  
+  .gallery-nav-right {
+    right: 10px;
+  }
+  
+  .gallery-nav-button img {
+    width: 24px; /* Ajuste o tamanho dos ícones conforme necessário */
+    height: 24px;
+  }
+  
+  .gallery-thumbnails-container {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border-radius: 6px;
+  }
+  
+  .gallery-thumbnail {
+    border: 2px solid transparent;
+  }
+  
+  .gallery-thumbnail.selected {
+    border-color: #007bff; /* Sua cor primária */
+  }
+
+  /* Esconder a barra de rolagem mas manter a funcionalidade */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Animações para os botões de navegação */
+.gallery-nav-button,
+.collections-nav-button {
+  transition: all 0.2s ease;
+}
+
+.gallery-nav-button:hover,
+.collections-nav-button:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Animação para os indicadores */
+.gallery-indicators button {
+  transition: all 0.3s ease;
+}
+
+.gallery-indicators button:hover {
+  transform: scale(1.2);
+}
+
+.button:hover{
+  opacity: 0.9;
+}
+
+/* Animação para os ícones de categoria */
+.category-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

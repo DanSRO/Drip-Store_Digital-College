@@ -161,7 +161,7 @@ export const MainHeader:React.FC = () => {
                             gap:'10px',
                         }}
                     >                
-                    <Link to="/register" className="register-link"
+                    <Link to="/registerEmail" className="register-link"
                         style={{
                             textDecoration:'underline',
                             fontSize:'16px',

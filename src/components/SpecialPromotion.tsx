@@ -8,10 +8,10 @@ export const SpecialPromotion = () => {
                         style={{
                         position: "absolute",
                         bottom:"70px",
-                        left: "100px",
-                        width: "600px",
-                        height: "460px",
-                        borderRadius: "50%",
+                        left: "89px",
+                        width: "550px",
+                        height: "440px",
+                        borderRadius: "110%",
                         background: "rgba(255, 77, 77, 0.1)",
                         zIndex: -1,
                         }}
@@ -19,11 +19,11 @@ export const SpecialPromotion = () => {
 
                     <img src="/Laye.png" alt="Tênis destaque amarelo" style={{width:'700px', height:'500px'}} />
                 </div>
-                <div>
+                <div style={{textAlign:'left'}}>
                     <h6 style={{color:"#c92071", fontSize:"1.1em"}}>Oferta especial</h6>
                     <h2><strong>Air Jordan edição de colecionador</strong></h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptatem at, sequi eveniet sint excepturi, blanditiis impedit consectetur ratione modi vitae saepe delectus porro. Quasi magnam atque aliquam ex nemo.</p>
-                    <div>
+                    <div style={{display:'flex', alignItems:'flex-start'}}>
                         <button 
                         className="button-primary"
                         

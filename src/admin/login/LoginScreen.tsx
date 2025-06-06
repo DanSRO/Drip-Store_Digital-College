@@ -28,7 +28,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = () => {
                 style={{
                     position:'absolute',
                     right:'30px',
-                    top:'240px',
+                    top:'130px',
                     height:'500px',
                     transform:'rotate(35deg)'
                 }}
@@ -39,7 +39,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = () => {
                         backgroundColor:'rgba(255,255,255,1)',
                         width:'583px',
                         height:'560px',
-                        top:'200px',
+                        top:'40px',
                         left:'100px',
                         borderRadius:'4px',
                         padding:'30px',

@@ -13,7 +13,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = () =>{
         e.preventDefault();
         console.log('Cadastro: ', {email});
         alert(`Cadastro realizado com sucesso:\nEmail: ${email}`);
-        navigate('/login');        
+        navigate('/register');        
     }
 
     return(

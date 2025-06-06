@@ -9,6 +9,9 @@ interface BuyBoxProps{
 }
 
 export const BuyBox = ({name, reference, rating, price = 759.90, priceDiscount=10.00, children}:BuyBoxProps) =>{
+    name="Tênis";
+    reference=1;
+    rating=10;
     const subtotal = price - (price/priceDiscount);
     const frete = 50.00;
     const total = subtotal + 50.00;
@@ -60,6 +63,10 @@ export const BuyBox = ({name, reference, rating, price = 759.90, priceDiscount=1
             </div>
             <div>
                 <h3>Resumo</h3>
+
+                <label htmlFor="">Nome {name}</label><br />
+                <label htmlFor="">Referência {reference}</label><br />
+                <label htmlFor="">Avaliação {rating}</label><br />
                 <label htmlFor="">Preço R$ {price.toFixed(2)}</label><br />
                 <label htmlFor="">Desconto R$ {priceDiscount.toFixed(2)}</label><br />
                 <label htmlFor="">Subtotal R$ {subtotal.toFixed(2)}</label><br />

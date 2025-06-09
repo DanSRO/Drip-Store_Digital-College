@@ -1,19 +1,28 @@
 import { List, X } from "lucide-react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import reactLogo from '../assets/logo-header.svg';
 import { useEffect, useState } from "react";
 import viteLogo from '../assets/mini-cart.svg';
+
+import { useAuth } from "../admin/login/AuthContext";
 
 export const MainHeader:React.FC = () => {
     
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
+    const { isAuthenticated, logout, user} = useAuth();
+    const navigate = useNavigate();
     
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+
+    const handleLogout = () =>{
+        logout();
+        navigate('/login');
+    }
 
     useEffect(()=>{
         const handleResize = ()=>{
@@ -153,7 +162,15 @@ export const MainHeader:React.FC = () => {
                 </div>
                 )}
 
-                {!user && (
+                {/* {!user && ( */}
+                {!isAuthenticated ? (
+                    <>
+                        <span style={{ marginRight: '15px' }}>Olá, {user?.name || 'Usuário'}!</span> {/* Exibe o nome do usuário */}
+                        <button onClick={handleLogout} style={{ padding: '8px 15px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+                        Sair
+                        </button>
+                    </>
+                ):(
                     <div
                         style={{
                             display:'flex',
@@ -196,7 +213,7 @@ export const MainHeader:React.FC = () => {
                         </Link>
                     </button>
                     </div>
-                )};
+                )}
 
                 {/* Cart Icon */}
                 <Link to="/meus-pedidos"
@@ -419,5 +436,5 @@ export const MainHeader:React.FC = () => {
                 </div>
             )}
         </header>
-    );
+    )
 }

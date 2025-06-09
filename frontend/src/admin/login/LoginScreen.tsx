@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import  imageTenisMelvin from '/tenis-melvin.png'
+import  imageTenisMelvin from '/tenis-melvin.png';
+import { useAuth } from "./AuthContext";
 
 interface LoginScreenProps{}
 
@@ -8,12 +9,31 @@ export const LoginScreen: React.FC<LoginScreenProps> = () => {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
     
-    const handleLogin = (e:React.FormEvent) => {
+    const handleLogin = async (e:React.FormEvent) => {
         e.preventDefault();
-        console.log('Login: ', {email, password});
-        alert(`Login realizado com sucesso:\nEmail: ${email}\nSenha: ${password}`);
-        navigate('/');
+        try{
+            const response = await fetch('http://localhost:5000/login',{
+            method:'POST',
+            headers:{ 'Content-Type':'application/json',
+            },
+            body:JSON.stringify({email, password}),
+        });
+        if(!response.ok){
+            const errorData = await response.json();
+            console.log("Erro na resposta da API: ", errorData);
+            throw new Error(errorData.message || `Erro de rede: ${response.status} ${response.statusText}`);
+        }
+        const responseData = await response.json();
+        const {token, user:userData } = responseData;
+            login(token, userData);
+            alert(`Login realizado com sucesso: ${userData.name}`);
+            navigate('/');
+        }catch(error:any){
+            console.error("Erro no login: ", error.response?.data || error.message);
+            alert(`Erro ao fazer login: ${error.response?.data?.message || 'Verifique sua credenciais.'}`);
+        }
     };
 
     return(
@@ -109,6 +129,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = () => {
                 <button style={{width:'523px', height:'48px', borderRadius:'8px', backgroundColor:'rgba(201,32,113,1)', color:'#fff', border:'none', marginTop:'20px', cursor:'pointer'}}
                 type="submit">Acessar Conta</button>
                 <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                    <span>Novo cliente? Então registre-se <a href="/register">aqui</a></span>
                     <span>Ou faça login com </span>
                     <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google" style={{ marginLeft: '10px', cursor: 'pointer' }} />
                     <img src="https://img.icons8.com/color/24/000000/facebook-new.png" alt="Facebook" style={{ marginLeft: '10px', cursor: 'pointer' }} />

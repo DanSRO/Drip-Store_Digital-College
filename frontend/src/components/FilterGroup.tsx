@@ -26,5 +26,5 @@ export const FilterGroup = () =>{
                 <Logo/>
             </Link>
         </div>
-    );
+    )
 }

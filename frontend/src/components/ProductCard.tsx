@@ -16,8 +16,8 @@ export const ProductCard = ({image, name, price, priceDiscount}:ProductCardProps
             textAlign:'center',
             paddingBottom:'10px'
         }}>            
-            <Link to={'/detalhes-do-produto'}>
-                <img src={image} alt={name} style={{display:'block', maxWidth:'80%', height:'321px', margin: '0 auto', transform:'rotate(-30deg)', objectFit:'contain'}}/>
+            <Link to={'/detalhes-do-produto/${id}'}>
+                <img src={`http://localhost:5000${image}`} alt={name} style={{display:'block', maxWidth:'80%', height:'321px', margin: '0 auto', transform:'rotate(-30deg)', objectFit:'contain'}}/>
             </Link>
             <div style={{padding:'10px'}}>
                 <h5 style={{margin:'5px 0'}}>{name}</h5>

@@ -9,8 +9,9 @@ import { BuyBox } from './components/BuyBox'
 import { ProductOptions } from './components/ProductOptions'
 import { ProductDetails } from './components/ProductDetails'
 import { LoginScreen } from './admin/login/LoginScreen'
-import { RegisterScreen } from './admin/login/RegisterScreen'
+// import { RegisterScreen } from './admin/login/RegisterScreen'
 import { CreatingAccount } from './admin/login/CreatingAccount'
+import { User } from './pages/User'
 
 function App() { 
 
@@ -25,9 +26,10 @@ function App() {
           <Route path="/meus-pedidos" element={<BuyBox name='' reference={123} rating={1} price={125} priceDiscount={120} children/>}/>
           <Route path="/detalhes-do-produto" element={<ProductDetails/>}/>
           <Route path="/login" element={<LoginScreen/>}/>
-          <Route path="/registerEmail" element={<RegisterScreen/>}/>
-          <Route path="/register" element={<CreatingAccount name='' CPF='' email='' fone=''/>}/>
+          {/* <Route path="/registerEmail" element={<RegisterScreen/>}/> */}
+          <Route path="/register" element={<CreatingAccount />}/>
           <Route path="/*" element={<Default/>}/>
+          <Route path="/users" element={<User/>}/>
         </Routes>
       </Layout>
     </Router>

@@ -1,27 +1,43 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface CreatingAccountProps{
-    name:string;
-    CPF:string;
-    email:string;
-    fone:string;
-}
+// interface CreatingAccountProps{
+//     name:string;
+//     CPF:string;
+//     email:string;
+//     fone:string;
+// }
 
-export const CreatingAccount:React.FC<CreatingAccountProps> = () =>{
+// export const CreatingAccount:React.FC<CreatingAccountProps> = () =>{
+export const CreatingAccount:React.FC = () =>{
     const[name, setName] = useState('');
     const[email, setEmail] = useState('');
     const[CPF, setCPF] = useState('');
     const[fone, setFone] = useState('');
+    const[password, setPassword] = useState('');
 
     const navigate = useNavigate();
 
-    const handleCreateAcc = (e:React.FormEvent) => {
+    const handleCreateAcc = async (e:React.FormEvent) => {
         e.preventDefault();
-        console.log(`Cadastro de conta realizado com sucesso: ${name}, ${email}, ${CPF}, ${fone}`);
-        alert('Cadastro efetuado');
-        navigate('login');
-    }
+        try{
+            const response = await fetch('http://localhost:5000/register',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({name, email, password}),              
+            });
+            if(!response.ok){
+                const errorData = await response.json();
+                console.log("Erro na resposta da api: ", errorData);
+                throw new Error(errorData.message || `Erro de rede: ${response.status} ${response.statusText}`);
+            }
+            const responseData = await response.json();
+            navigate('/login');
+        }catch(error:any){            
+            console.error("Erro no registro: ", error.response?.data || error.message);
+            alert(`Erro ao registrar usuário: ${error.response?.data?.message}`);
+        }
+    };
 
     return(
         <div style={{

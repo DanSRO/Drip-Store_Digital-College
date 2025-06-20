@@ -40,16 +40,17 @@ app.get('/products', async(req:any, res:any)=>{
 });
 
 app.post('/register', async(req:any, res:any)=>{
-    const {name, email, password} = req.body;
+    console.log("DADOS RECEBIDOS DO FRONT: ", req.body);
+    const {name, email, password,CPF, fone, endereco, cidade, CEP, bairro, complemento} = req.body;
     try{
-        if(!name || !email || !password){
+        if(!name || !email || !password || !CPF || !fone || !endereco || !cidade || !CEP || !bairro || !complemento){
             return res.status(400).json({message:"Todos os campos são obrigatórios."});
         }
         const existingUser = await user.findOne({where:{email}});
         if(existingUser){
             return res.status(409).json({message: 'Email já cadastrado.'});
         }
-        const newUser = await user.create({name, email, password});
+        const newUser = await user.create({name, email, password, CPF, fone, endereco, cidade, CEP, bairro, complemento});
         res.status(201).json({message:"Usuário registrado com sucesso.", id:newUser.id, name:newUser.name, email:newUser.email});
     }catch(error:any){
         console.error('Erro no registro: ', error);
@@ -85,27 +86,32 @@ app.get('/logout', async(req:any, res:any)=>{
     res.status(200).json("Adeus! Volte sempre.");
 })
 
-console.log('Iniciando sincronia do BD...');
-sequelize.sync({force:false})
-.then(async() => {
-    console.log("BD sincronizado com sucess.");
-    const productCount = await Product.count();
-    if (productCount === 0) {
-      console.log('Populando produtos de exemplo...');
-      await Product.bulkCreate([
-        { image: "/images/Layer 1aa.png", name: "K-Swiss V8 - Masculino", price: 200, priceDiscount: 100 },
-        { image: "/images/Layer 1aa.png", name: "Nike Revolution 6 - Feminino", price: 250, priceDiscount: 150 },
-        { image: "/images/Layer 1aa.png", name: "Adidas Ultraboost - Unissex", price: 300, priceDiscount: 200 },
-        { image: "/images/Layer 1aa.png", name: "Puma RS-X - Infantil", price: 180, priceDiscount: 90 },
-        { image: "/images/Layer 1aa.png", name: "New Balance 574 - Masculino", price: 220, priceDiscount: 120 },
-        { image: "/images/Layer 1aa.png", name: "Reebok Classic - Feminino", price: 190, priceDiscount: 80 },
-        { image: "/images/Layer 1aa.png", name: "Mizuno Wave - Unissex", price: 280, priceDiscount: 180 },
-        { image: "/images/Layer 1aa.png", name: "Under Armour HOVR - Masculino", price: 270, priceDiscount: 160 },
-        { image: "/images/Layer 1aa.png", name: "Asics Gel-Kayano - Feminino", price: 260, priceDiscount: 140 },
-        { image: "/images/Layer 1aa.png", name: "Fila Disruptor - Unissex", price: 170, priceDiscount: 70 },
-      ]);
-      console.log('Produtos de exemplo adicionados.');
+const startServer = async()=>{
+    try{
+        console.log('Iniciando sincronia do BD...');
+        await sequelize.sync({alter:true})
+        console.log("BD sincronizado com sucess.");
+        const productCount = await Product.count();
+
+        if (productCount === 0) {
+          console.log('Populando produtos de exemplo...');
+          await Product.bulkCreate([
+            { image: "/images/Layer 1aa.png", name: "K-Swiss V8 - Masculino", price: 200, priceDiscount: 100 },
+            { image: "/images/Layer 1aa.png", name: "Nike Revolution 6 - Feminino", price: 250, priceDiscount: 150 },
+            { image: "/images/Layer 1aa.png", name: "Adidas Ultraboost - Unissex", price: 300, priceDiscount: 200 },
+            { image: "/images/Layer 1aa.png", name: "Puma RS-X - Infantil", price: 180, priceDiscount: 90 },
+            { image: "/images/Layer 1aa.png", name: "New Balance 574 - Masculino", price: 220, priceDiscount: 120 },
+            { image: "/images/Layer 1aa.png", name: "Reebok Classic - Feminino", price: 190, priceDiscount: 80 },
+            { image: "/images/Layer 1aa.png", name: "Mizuno Wave - Unissex", price: 280, priceDiscount: 180 },
+            { image: "/images/Layer 1aa.png", name: "Under Armour HOVR - Masculino", price: 270, priceDiscount: 160 },
+            { image: "/images/Layer 1aa.png", name: "Asics Gel-Kayano - Feminino", price: 260, priceDiscount: 140 },
+            { image: "/images/Layer 1aa.png", name: "Fila Disruptor - Unissex", price: 170, priceDiscount: 70 },
+          ]);
+          console.log('Produtos de exemplo adicionados.');
+        }
+        app.listen(5000, () => console.log('Servidor rodando na porta 5000.'));
+    }catch(err: any) {
+        console.error('Erro ao sincronizar o banco:', err);
     }
-    app.listen(5000, () => console.log('Servidor rodando na porta 5000.'));
-})
-.catch((err: any) => console.error('Erro ao sincronizar o banco:', err));
+};
+startServer();

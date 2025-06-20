@@ -163,7 +163,7 @@ export const MainHeader:React.FC = () => {
                 )}
 
                 {/* {!user && ( */}
-                {!isAuthenticated ? (
+                {isAuthenticated ? (
                     <>
                         <span style={{ marginRight: '15px' }}>Olá, {user?.name || 'Usuário'}!</span> {/* Exibe o nome do usuário */}
                         <button onClick={handleLogout} style={{ padding: '8px 15px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>

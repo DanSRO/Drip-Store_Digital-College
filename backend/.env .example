@@ -1,0 +1,5 @@
+DB_NAME=nome-do-seu-banco
+DB_USER=seu-usuario-do-banco
+DB_PASS=sua-senha-do-banco
+DB_HOST=seu-host-no-caso-usei-localhost
+JWT_SECRET=sua-chave-secreta

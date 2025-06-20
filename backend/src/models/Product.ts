@@ -1,7 +1,22 @@
-import { DataTypes } from "sequelize";
+import { CreationOptional, DataTypes, InferCreationAttributes, Model } from "sequelize";
 import { sequelize } from "../config/database.js";
 
-export const Product = sequelize.define("Product",{
+interface ProductAttributes{
+    id:CreationOptional<number>;
+    image:string;
+    name:string;
+    price:number;
+    priceDiscount:number | null;
+    createAt?:CreationOptional<Date>;
+    updateAt?:CreationOptional<Date>;
+}
+
+type ProductCreationAttributes = Omit<ProductAttributes, 'id' & {id?: CreationOptional<number>}>;
+export interface ProductInstance extends Model<ProductAttributes, ProductCreationAttributes>, ProductAttributes{
+
+}
+
+export const Product = sequelize.define<ProductInstance>("Product",{
     id:{
         type:DataTypes.INTEGER,
         autoIncrement:true,

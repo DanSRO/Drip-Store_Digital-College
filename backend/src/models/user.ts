@@ -2,11 +2,18 @@ import { CreationOptional, DataTypes, Model, InferAttributes, InferCreationAttri
 import {sequelize} from "../config/database.js";
 import bcrypt from 'bcryptjs';
 
-interface UserAttributes{
+export interface UserAttributes{
   id: CreationOptional<number>;
   name:string;
   email:string;
   password:string;
+  CPF:string; 
+  fone:string;
+  endereco:string;
+  cidade:string;
+  CEP:string;
+  bairro:string;
+  complemento:string;
 }
 // type UserCreationAttributes = InferCreationAttributes<UserAttributes, { omit: 'id' }>;
 type UserCreationAttributes = Omit<UserAttributes, 'id' & {id?:CreationOptional<number>;}>;
@@ -34,6 +41,34 @@ export const user = sequelize.define<UserInstance>("user", {
     },
   },
   password:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },  
+  CPF:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  fone:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  endereco:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  cidade:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  CEP:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  bairro:{
+    type:DataTypes.STRING,
+    allowNull:false,
+  },
+  complemento:{
     type:DataTypes.STRING,
     allowNull:false,
   }

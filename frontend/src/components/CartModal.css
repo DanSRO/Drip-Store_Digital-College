@@ -1,0 +1,155 @@
+.cart-hover-modal {
+    position: absolute; /* Posicionamento absoluto em relação ao pai (geralmente o ícone do carrinho ou seu container) */
+    top: calc(100% + 10px); /* 10px abaixo do elemento pai */
+    right: 0; /* Alinha à direita do elemento pai */
+    width: 300px; /* Largura do modal */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+    opacity: 0; /* Começa invisível */
+    visibility: hidden; /* Escondido por padrão */
+    transform: translateY(-10px); /* Pequeno deslocamento para animação */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Quando o modal está ativo, ele fica visível */
+.cart-icon-container.active .cart-hover-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cart-hover-modal h3 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: #777;
+    padding: 20px 0;
+}
+
+.cart-hover-items {
+    max-height: 200px; /* Altura máxima para a lista de itens, com scroll se necessário */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cart-hover-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #f0f0f0; /* Borda pontilhada entre itens */
+}
+
+.cart-hover-item:last-child {
+    border-bottom: none; /* Remove a borda do último item */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.cart-hover-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+.cart-hover-item-details {
+    flex-grow: 1;
+}
+
+.cart-hover-item-name {
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.cart-hover-item-prices {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.original-price-strikethrough {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.8em;
+}
+
+.current-price {
+    font-weight: bold;
+    color: #333;
+    font-size: 1em;
+}
+
+.cart-hover-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.total-amount {
+    color: #e91e63; /* Cor rosa para o total, como na imagem */
+}
+
+.cart-hover-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.empty-cart-button,
+.view-cart-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    flex: 1; /* Ocupa espaço igual */
+}
+
+.empty-cart-button {
+    background-color: #fff;
+    color: #e91e63;
+    border: 1px solid #e91e63;
+}
+
+.empty-cart-button:hover {
+    background-color: #fcebeb;
+}
+
+.view-cart-button {
+    background-color: #e91e63; /* Cor rosa principal */
+    color: white;
+    border: 1px solid #e91e63;
+}
+
+.view-cart-button:hover {
+    background-color: #c2185b;
+}
+
+/* Para o ícone do carrinho na navbar - apenas para posicionamento relativo */
+.cart-icon-container {
+    position: relative; /* Essencial para o posicionamento absoluto do modal */
+    display: inline-block; /* Para que o `right: 0` funcione em relação a ele */
+}

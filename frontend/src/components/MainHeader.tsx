@@ -4,10 +4,21 @@ import reactLogo from '../assets/logo-header.svg';
 import { useEffect, useState } from "react";
 import viteLogo from '../assets/mini-cart.svg';
 
+import { CartModal } from "./CartModal";
 import { useAuth } from "../admin/login/AuthContext";
+
+interface HeaderCartItem {
+    id:string;
+    name:string;
+    price:number;
+    originalPrice?:number;
+    imageUrl:string;
+    quantity:number;
+}
 
 export const MainHeader:React.FC = () => {
     
+    const [isCartModalVisible, setIsCartModalVisible] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
@@ -30,8 +41,50 @@ export const MainHeader:React.FC = () => {
         }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    });
+    },[]);
 
+    const exampleCartItems:HeaderCartItem[]=[
+        {
+            id:'nike-revolution-1',
+            name:'tenis nike revolution 6 next nature masculino',
+            price:219.00,
+            originalPrice:280.00,
+            imageUrl:'/public/Layer 1aa.png',
+            quantity:1,
+        },
+        {
+            id:'nike-revolution-2',
+            name:'tenis nike revolution 6 next nature masculino',
+            price:219.00,
+            imageUrl:'/public/Layer 1aa.png',
+            quantity:1,
+        },
+    ];
+
+    const totalItemsInCart = exampleCartItems.length;
+    const totalCartValue = exampleCartItems.reduce((acc,item)=>acc + item.price * item.quantity,0);
+    const handleMouseEnterCart = ()=>{
+        if(!isMobile) {
+            setIsCartModalVisible(true)
+        }
+    }
+
+    const handleMouseLeaveCart = ()=>{
+        setTimeout(()=>{
+            setIsCartModalVisible(false)
+        },2000)
+    }
+    
+    const handleEmptyCart = ()=>{
+        console.log('carrinho esvaziado')
+        setIsCartModalVisible(false)
+        navigate('/meu-carrinho')
+    }
+
+    const handleViewCart = ()=>{
+        console.log('navegando para a página do carrinho')
+        setIsCartModalVisible(false)
+    }
     
     return (
         <header
@@ -58,7 +111,6 @@ export const MainHeader:React.FC = () => {
                         border: 'none',
                         cursor:' pointer',
                         padding: '5px',
-                        // display: 'flex',
                         display: isMobile ? 'flex' : 'none',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -82,37 +134,36 @@ export const MainHeader:React.FC = () => {
                 </Link>
 
                 { !isMobile && (    
-                <div 
-                    style={{
-                        display:'flex',
-                        alignItems:'center',
-                        border:'1px solid #CCC',
-                        borderRadius:'4px',
-                        padding:'5px 10px',
-                        flexGrow:1,
-                        maxWidth:'500px',
-                        backgroundColor:'rgba(204,204,204,1)',
-                    }}
-                >
-                <input
-                    type="text"
-                    placeholder="Pesquisar produto"
-                    style={{
-                        color:'black',
-                        backgroundColor:'transparent',
-                        border:'none',
-                        outline:'none',
-                        padding:'5px',
-                        flexGrow:1,
-                    }}
-                />
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                    style={{width:'20px', height:'20px', fill:'#666', marginLeft:'8px', flexShrink:0, cursor:'pointer'}}
+                    <div 
+                        style={{
+                            display:'flex',
+                            alignItems:'center',
+                            border:'1px solid #CCC',
+                            borderRadius:'4px',
+                            padding:'5px 10px',
+                            flexGrow:1,
+                            maxWidth:'500px',
+                            backgroundColor:'rgba(204,204,204,1)',
+                        }}
                     >
-                    <path d="M10 2a8 8 0 0 1 6.32 12.94l5.38 5.39-1.41 1.41-5.38-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/>
-                </svg>
-                
-                </div>
+                        <input
+                            type="text"
+                            placeholder="Pesquisar produto"
+                            style={{
+                                color:'black',
+                                backgroundColor:'transparent',
+                                border:'none',
+                                outline:'none',
+                                padding:'5px',
+                                flexGrow:1,
+                            }}
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            style={{width:'20px', height:'20px', fill:'#666', marginLeft:'8px', flexShrink:0, cursor:'pointer'}}
+                            >
+                            <path d="M10 2a8 8 0 0 1 6.32 12.94l5.38 5.39-1.41 1.41-5.38-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/>
+                        </svg>
+                    </div>
                 )}
 
                 {isMobile && (
@@ -122,44 +173,43 @@ export const MainHeader:React.FC = () => {
                             style={{width:'20px', height:'20px', fill:'#666', marginLeft:'8px', flexShrink:0, cursor:'pointer'}}
                             >
                             <path d="M10 2a8 8 0 0 1 6.32 12.94l5.38 5.39-1.41 1.41-5.38-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/>
-
                         </svg>
                     </button>
                 )}
 
                 {isMobile && isMobileSearchOpen && (
-                <div style={{
-                    position: 'absolute',
-                    top: '100%', left: 0, right:0,
-                    width: '100%',
-                    height: '60px',
-                    backgroundColor: '#fff !important',
-                    padding: '10px 20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                    zIndex: 999
-                }}>
-                    <input
-                    autoFocus
-                    type="text"
-                    placeholder="Pesquisar produtos..."
-                    style={{
-                        color:'black',
-                        backgroundColor:'transparent',
-                        flex: 1,
-                        height: '40px',
-                        padding: '0 12px',
-                        borderRadius: '4px',
-                        border: '1px solid #ccc'
-                    }}
-                    />
-                    <button onClick={() => setIsMobileSearchOpen(false)} style={{
-                    background: 'none', border: 'none', marginLeft: '10px', cursor: 'pointer'
+                    <div style={{
+                        position: 'absolute',
+                        top: '100%', left: 0, right:0,
+                        width: '100%',
+                        height: '60px',
+                        backgroundColor: '#fff !important',
+                        padding: '10px 20px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                        zIndex: 999
                     }}>
-                    <X size={24} />
-                    </button>
-                </div>
+                        <input
+                        autoFocus
+                        type="text"
+                        placeholder="Pesquisar produtos..."
+                        style={{
+                            color:'black',
+                            backgroundColor:'transparent',
+                            flex: 1,
+                            height: '40px',
+                            padding: '0 12px',
+                            borderRadius: '4px',
+                            border: '1px solid #ccc'
+                        }}
+                        />
+                        <button onClick={() => setIsMobileSearchOpen(false)} style={{
+                        background: 'none', border: 'none', marginLeft: '10px', cursor: 'pointer'
+                        }}>
+                        <X size={24} />
+                        </button>
+                    </div>
                 )}
 
                 {/* {!user && ( */}
@@ -178,58 +228,103 @@ export const MainHeader:React.FC = () => {
                             gap:'10px',
                         }}
                     >                
-                    <Link to="/registerEmail" className="register-link"
-                        style={{
-                            textDecoration:'underline',
-                            fontSize:'16px',
-                            color:'#666',
-                        }}
-                    >
-                        Cadastre-se
-                    </Link>                
-                    <button className="button-primary"
-                        style={{
-                            width: '114px',
-                            height: '40px',
-                            borderRadius: '4px',
-                            backgroundColor: '#FF6B9D',
-                            border: 'none',
-                            cursor: 'pointer',
-                        }}
-                    >
-                        <Link to="/login"
+                        <Link to="/registerEmail" className="register-link"
                             style={{
-                                color: 'white',
-                                textDecoration: 'none',
-                                display: 'block',
-                                width: '100%',
-                                height: '100%',
-                                // alignItems: 'center',
-                                // justifyContent: 'center',
-                                paddingTop:'4px'
-                            }}                    
+                                textDecoration:'underline',
+                                fontSize:'16px',
+                                color:'#666',
+                                whiteSpace:'nowrap',
+                            }}
                         >
-                            Entrar
-                        </Link>
-                    </button>
+                            Cadastre-se
+                        </Link>                
+                        <button className="button-primary"
+                            style={{
+                                width: '114px',
+                                height: '40px',
+                                borderRadius: '4px',
+                                backgroundColor: '#FF6B9D',
+                                border: 'none',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            <Link to="/login"
+                                style={{
+                                    color: 'white',
+                                    textDecoration: 'none',
+                                    display: 'block',
+                                    width: '100%',
+                                    height: '100%',
+                                    paddingTop:'4px',
+                                }}                    
+                            >
+                                Entrar
+                            </Link>
+                        </button>
                     </div>
                 )}
 
-                {/* Cart Icon */}
-                <Link to="/meus-pedidos"
+                <div 
+                    className={`cart-icon-container ${isCartModalVisible ? 'active':''}`}
+                    onMouseEnter={handleMouseEnterCart}
+                    onMouseLeave={handleMouseLeaveCart}
                     style={{
+                        position: 'relative',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         color: 'rgba(201,32,113,1)',
                         textDecoration: 'none',
-                        position: 'relative',
+                        cursor: 'pointer',
                     }}
-                 >
-                
-                    <img src={viteLogo} className="logo" alt="Vite logo" style={{width:'253px', height:'44px'}}/>              
-                
-                </Link>
+                >
+                    {/* Cart Icon */}
+                    <Link to="/meus-pedidos"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'rgba(201,32,113,1)',
+                            textDecoration: 'none',
+                            position: 'relative',
+                            padding: '5px'
+                        }}
+                    >
+                        <img src={viteLogo} className="logo" alt="Vite logo" style={{width:'253px', height:'44px'}}/>           
+                        {/*Contador de itens do carrinho*/}
+                        {totalItemsInCart > 0 && (
+                            <span 
+                                style={{
+                                    position: 'absolute',
+                                    top: '-5px',
+                                    right: '-5px',
+                                    backgroundColor: '#e91e63',
+                                    color: 'white',
+                                    borderRadius: '50%',
+                                    padding: '2px 7px',
+                                    fontSize: '0.7em',
+                                    fontWeight: 'bold',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    minWidth: '20px',
+                                    height: '20px',
+                                }}
+                            >
+                                {totalItemsInCart}
+                            </span>
+                        )}
+                    </Link>
+                    {/*Modal do carrinho */}
+                    {isCartModalVisible && (
+                        <CartModal
+                            items = {exampleCartItems}
+                            totalValue = {totalCartValue}
+                            onEmptyCart = {handleEmptyCart}
+                            onViewCart = {handleViewCart}
+                        />
+                    )}
+                </div>
             </div>
             
             <nav 

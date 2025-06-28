@@ -12,6 +12,8 @@ import { LoginScreen } from './admin/login/LoginScreen'
 import { RegisterScreen } from './admin/login/RegisterScreen'
 import { CreatingAccount } from './admin/login/CreatingAccount'
 import { User } from './pages/User'
+import { MyInfos } from './components/MyInfos'
+import { MyOrders } from './components/MyOrders'
 
 function App() { 
 
@@ -23,7 +25,9 @@ function App() {
           <Route path="/produtos" element={<ProductListingPage/>}/>
           <Route path="/produtos/:id" element={<ProductViewPage/>}/>
           <Route path="/categorias" element={<ProductOptions/>}/>
-          <Route path="/meus-pedidos" element={<BuyBox name='' reference={123} rating={1} price={125} priceDiscount={120} children/>}/>
+          <Route path="/meu-carrinho" element={<BuyBox/>}/>
+          <Route path="/meus-pedidos" element={<MyOrders/>}/>
+          <Route path="/minhas-infos" element={<MyInfos/>}/>
           <Route path="/detalhes-do-produto" element={<ProductDetails/>}/>
           <Route path="/login" element={<LoginScreen/>}/>
           <Route path="/registerEmail" element={<RegisterScreen/>}/>

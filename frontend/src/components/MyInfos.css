@@ -1,0 +1,117 @@
+/*Container principal*/
+.my-infos-page-container {
+    display: flex;
+    max-width: 1200px;
+    justify-content: flex-start;
+    margin: 40px auto; /* Centraliza e adiciona espaço vertical */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    min-height: 500px; /* Garante uma altura mínima */
+    font-family: Arial, sans-serif;
+}
+
+/* Menu Lateral (Sidebar) */
+.my-infos-sidebar {
+    width: 250px; /* Largura fixa para a sidebar */
+    padding: 30px 0;
+    border-right: 1px solid #eee; /* Linha divisória */
+    background-color: #fcfcfc; /* Fundo ligeiramente diferente */
+}
+
+.my-infos-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.my-infos-sidebar li {
+    margin-bottom: 5px;
+}
+
+
+.sidebar-item {
+    display: block;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+    border-left: 4px solid transparent; /* Para a barra ativa */
+}
+
+.sidebar-item:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.sidebar-item.active {
+    background-color: #fcebeb; /* Cor de fundo para o item ativo (rosa claro) */
+    color: #e91e63; /* Cor do texto para o item ativo (rosa mais escuro) */
+    font-weight: bold;
+    border-left-color: #e91e63; /* Cor da barra lateral para o item ativo */
+}
+
+.my-delivery-content {
+    flex-grow: 1; /* Ocupa o espaço restante */
+    padding: 30px;
+}
+
+.my-delivery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinha "Editar" à parte inferior */
+    margin-bottom: 25px;
+    padding-bottom: 15px; /* Espaço antes da linha */
+    border-bottom: 1px solid #eee; /* Linha de separação */
+}
+
+.my-delivery-header h2 {
+    font-size: 1.6em;
+    color: #333;
+    margin: 0;
+}
+
+.my-delivery-header button{    
+    width: 114px;
+    height: 40px; 
+    border-radius:4px; 
+    color:white; 
+    font-size:14px; 
+    margin-bottom:10px;
+    background-color:var(--error);
+}
+
+
+/* Lista de Informações */
+.infos-list {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    gap: 15px; /* Espaço entre cada item */
+}
+
+
+@media (max-width: 768px) {
+    .my-infos-page-container {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .my-infos-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+    }
+
+    .my-infos-sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .my-infos-sidebar li {
+        margin: 5px 10px;
+    }
+}

@@ -3,6 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "contributors": [
+    {
+      "name": "Acaz Moita Fernandes",
+      "email": "acazfernandess@gmail.com"
+    },
+    {
+      "name": "Daniel de Araujo Dantas",
+      "email": "dan_dantas@hotmail.com"
+    }
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

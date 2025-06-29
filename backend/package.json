@@ -4,6 +4,16 @@
   "main": "dist/server.js",
   "license": "MIT",
   "type": "module",
+  "contributors": [
+    {
+      "name": "Acaz Moita Fernandes",
+      "email": "acazfernandess@gmail.com"
+    },
+    {
+      "name": "Daniel de Araujo Dantas",
+      "email": "dan_dantas@hotmail.com"
+    }
+  ],
   "scripts": {
     "test":"jest",
     "build": "tsc",
@@ -20,7 +30,8 @@
     "jest": "^30.0.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.10.2",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/cors": "^2.8.18",

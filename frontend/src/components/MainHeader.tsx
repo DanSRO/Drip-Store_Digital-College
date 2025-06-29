@@ -1,7 +1,7 @@
 import { List, X } from "lucide-react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import reactLogo from '../assets/logo-header.svg';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import viteLogo from '../assets/mini-cart.svg';
 
 import { CartModal } from "./CartModal";
@@ -101,6 +101,22 @@ export const MainHeader:React.FC = () => {
     
     });
 
+    const searchRef = useRef<HTMLDivElement | null>(null);
+
+    // useEffect para clicar fora e fechar o dropdown
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+                setSearch(''); // fecha o dropdown limpando a pesquisa
+            }
+        };
+    
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
         <header
             style={{
@@ -149,17 +165,18 @@ export const MainHeader:React.FC = () => {
                 </Link>
 
                 { !isMobile && (    
-                    <div style={{
-                        position: 'relative', // necessário para posicionar o dropdown
-                        display: 'flex',
-                        alignItems: 'stretch',
-                        border: '1px solid #CCC',
-                        borderRadius: '4px',
-                        padding: '5px 10px',
-                        flexGrow: 1,
-                        maxWidth: '500px',
-                        backgroundColor: 'rgba(204,204,204,1)'
-                    }}>
+                    <div ref={searchRef}
+                        style={{
+                            position: 'relative', // necessário para posicionar o dropdown
+                            display: 'flex',
+                            alignItems: 'stretch',
+                            border: '1px solid #CCC',
+                            borderRadius: '4px',
+                            padding: '5px 10px',
+                            flexGrow: 1,
+                            maxWidth: '500px',
+                            backgroundColor: 'rgba(204,204,204,1)'
+                        }}>
                         <input
                             type="text"
                             placeholder="Pesquisar produto"

@@ -46,6 +46,14 @@ export const MainHeader:React.FC = () => {
     const exampleCartItems:HeaderCartItem[]=[
         {
             id:'nike-revolution-1',
+            name:'camisa',
+            price:219.00,
+            originalPrice:280.00,
+            imageUrl:'/public/Layer 1aa.png',
+            quantity:1,
+        },
+        {
+            id:'nike-revolution-1',
             name:'tenis nike revolution 6 next nature masculino',
             price:219.00,
             originalPrice:280.00,
@@ -54,7 +62,7 @@ export const MainHeader:React.FC = () => {
         },
         {
             id:'nike-revolution-2',
-            name:'tenis nike revolution 6 next nature masculino',
+            name:'tenis nike revolution 7 next nature masculino',
             price:219.00,
             imageUrl:'/public/Layer 1aa.png',
             quantity:1,
@@ -86,6 +94,13 @@ export const MainHeader:React.FC = () => {
         setIsCartModalVisible(false)
     }
     
+    const [search, setSearch] = useState('');
+
+    const filtered = exampleCartItems.filter((product) => {
+        return product.name.toLowerCase().includes(search.toLowerCase());
+    
+    });
+
     return (
         <header
             style={{
@@ -134,35 +149,74 @@ export const MainHeader:React.FC = () => {
                 </Link>
 
                 { !isMobile && (    
-                    <div 
-                        style={{
-                            display:'flex',
-                            alignItems:'center',
-                            border:'1px solid #CCC',
-                            borderRadius:'4px',
-                            padding:'5px 10px',
-                            flexGrow:1,
-                            maxWidth:'500px',
-                            backgroundColor:'rgba(204,204,204,1)',
-                        }}
-                    >
+                    <div style={{
+                        position: 'relative', // necessário para posicionar o dropdown
+                        display: 'flex',
+                        alignItems: 'stretch',
+                        border: '1px solid #CCC',
+                        borderRadius: '4px',
+                        padding: '5px 10px',
+                        flexGrow: 1,
+                        maxWidth: '500px',
+                        backgroundColor: 'rgba(204,204,204,1)'
+                    }}>
                         <input
                             type="text"
                             placeholder="Pesquisar produto"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
                             style={{
-                                color:'black',
-                                backgroundColor:'transparent',
-                                border:'none',
-                                outline:'none',
-                                padding:'5px',
-                                flexGrow:1,
+                                color: 'black',
+                                backgroundColor: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                padding: '5px',
+                                flexGrow: 1,
                             }}
                         />
+                        
+                        {/* Ícone de lupa */}                        
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             style={{width:'20px', height:'20px', fill:'#666', marginLeft:'8px', flexShrink:0, cursor:'pointer'}}
                             >
                             <path d="M10 2a8 8 0 0 1 6.32 12.94l5.38 5.39-1.41 1.41-5.38-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/>
-                        </svg>
+                        </svg>                    
+
+                        {/* Dropdown de resultados */}
+                        {search.length > 0 && (
+                            <div style={{
+                                position: 'absolute',
+                                top: '100%',
+                                left: 0,
+                                right: 0,
+                                backgroundColor: '#fff',
+                                border: '1px solid #ccc',
+                                borderTop: 'none',
+                                maxHeight: '200px',
+                                overflowY: 'auto',
+                                zIndex: 1000,
+                                boxShadow: '0px 4px 6px rgba(0,0,0,0.1)',
+                            }}>
+                                {filtered.length > 0 ? (
+                                    filtered.map((item) => (
+                                        <div key={item.id} style={{
+                                            padding: '10px',
+                                            borderBottom: '1px solid #eee',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '10px',
+                                            cursor: 'pointer',
+                                            backgroundColor: '#fff'
+                                        }}>
+                                            <img src={item.imageUrl} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'cover' }} />
+                                            <span style={{ color: '#333', fontSize: '14px' }}>{item.name}</span>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div style={{ padding: '10px', color: '#999' }}>Nenhum produto encontrado.</div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 )}
 

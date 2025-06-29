@@ -105,7 +105,7 @@ export const BuyBox = ({cartProducts = [], relatedProducts = []}:BuyBoxProps) =>
                     <tbody>
                         {products.map(product=>(
                         <tr key={product.id}>
-                            <td className="product-details-cel">                                
+                            <td className="product-details-cell">                                
                                 <img src={product.imageUrl} alt={product.name} />
                                 <div className="product-info">
                                     <p className="product-name">{product.name}</p>
